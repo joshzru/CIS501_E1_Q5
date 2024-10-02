@@ -1,10 +1,38 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
 namespace CIS501_E1_Q5
 {
-    public partial class Form1 : Form
+    public partial class LibraryView : Form
     {
-        public Form1()
+        private List<Book> _books;
+
+        private Book? _selectedBook;
+
+        private BookModifiedDel BookModifiedDel;
+
+        public LibraryView(BookModifiedDel bookModified)
         {
             InitializeComponent();
+
+            BookModifiedDel = bookModified;
+        }
+
+        public void SyncData(List<Book> bookList)
+        {
+            // implement this
+        }
+
+        private void LibraryView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // implement this
         }
     }
 }
