@@ -34,5 +34,15 @@ namespace CIS501_E1_Q5
         {
             // implement this
         }
+
+        private void uxOpenBookButton_Click(object sender, EventArgs e)
+        {
+            // Implement this
+        }
+
+        private void BookListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Implement this
+        }
     }
 }

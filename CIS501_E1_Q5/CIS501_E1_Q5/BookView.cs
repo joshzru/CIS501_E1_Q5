@@ -19,11 +19,43 @@ namespace CIS501_E1_Q5
             InitializeComponent();
 
             _book = book;
+            Text = book.Title;
+            BookPageLabel.Text = book.GetCurrentPage();
         }
 
         private void BookView_FormClosing(object sender, FormClosingEventArgs e)
         {
             // implement this
+        }
+
+        private void uxPreviousPageButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void uxGoToPageButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void uxRemoveBookmarkButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void uxAddBookMarkButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void uxNextPageButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GoToPageTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
