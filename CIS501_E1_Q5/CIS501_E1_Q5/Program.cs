@@ -1,5 +1,6 @@
 namespace CIS501_E1_Q5
 {
+
     internal static class Program
     {
         /// <summary>
@@ -11,7 +12,12 @@ namespace CIS501_E1_Q5
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new LibraryView());
+            LibraryController controller = new LibraryController();
+            BookModifiedDel bookModifiedDel = controller.UpdateBook;
+            LibraryView libraryView = new LibraryView(bookModifiedDel);
+            DataSyncDel dataSyncDel = libraryView.SyncData;
+            controller.AttachDelToController(dataSyncDel);
+            Application.Run(libraryView);
         }
     }
 }

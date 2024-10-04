@@ -14,7 +14,7 @@ namespace CIS501_E1_Q5
     {
         private List<Book> _books;
 
-        private Book? _selectedBook;
+        private Book _selectedBook;
 
         private BookModifiedDel BookModifiedDel;
 
@@ -23,11 +23,17 @@ namespace CIS501_E1_Q5
             InitializeComponent();
 
             BookModifiedDel = bookModified;
+            _books = new List<Book>();
         }
 
         public void SyncData(List<Book> bookList)
         {
-            // implement this
+            _books = bookList;
+            BookListBox.Items.Clear();
+            foreach (Book book in _books) 
+            { 
+                BookListBox.Items.Add(book.Title);
+            }
         }
 
         private void LibraryView_FormClosing(object sender, FormClosingEventArgs e)
@@ -37,12 +43,24 @@ namespace CIS501_E1_Q5
 
         private void uxOpenBookButton_Click(object sender, EventArgs e)
         {
-            // Implement this
+            BookView bookView = new BookView(_selectedBook);
+            bookView.ShowDialog();
+            Book modified = bookView._book;
+            bookView.Dispose();
+            BookModifiedDel(modified);
         }
 
         private void BookListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Implement this
+            if (BookListBox.SelectedItems.Count > 0)
+            {
+                uxOpenBookButton.Enabled = true;
+                _selectedBook = _books[BookListBox.SelectedIndex];
+            }
+            else
+            {
+                uxOpenBookButton.Enabled = false;
+            }
         }
     }
 }

@@ -8,25 +8,25 @@ namespace CIS501_E1_Q5
 {
     public class Book
     {
-        private int _pages;
-
         private string[] _content;
 
-        private int _currentPage;
-
         private List<int> _bookmarks;
+        
+        public int CurrentPage;
+        
+        public int Pages;
 
-        private string _title;
+        public string Title;
 
-        public string Title => _title;
+        public List<int> BookMarks => _bookmarks;
 
-        public Book(int pages, string[] content, int currentPage, List<int> bookmarks, string title)
+        public Book(int pages, string[] content, List<int> bookmarks, string title)
         {
-            _pages = pages;
+            Pages = pages;
             _content = content;
-            _currentPage = currentPage;
+            CurrentPage = 0;
             _bookmarks = bookmarks;
-            _title = title;
+            Title = title;
         }
 
         public string GetPage(int page)
@@ -36,7 +36,7 @@ namespace CIS501_E1_Q5
 
         public string GetCurrentPage()
         {
-            return _content[_currentPage];
+            return _content[CurrentPage];
         }
 
         public void AddBookMark(int page)

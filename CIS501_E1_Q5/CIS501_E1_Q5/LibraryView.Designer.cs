@@ -58,6 +58,7 @@
             // 
             // uxOpenBookButton
             // 
+            uxOpenBookButton.Enabled = false;
             uxOpenBookButton.Location = new Point(361, 42);
             uxOpenBookButton.Name = "uxOpenBookButton";
             uxOpenBookButton.Size = new Size(75, 23);
