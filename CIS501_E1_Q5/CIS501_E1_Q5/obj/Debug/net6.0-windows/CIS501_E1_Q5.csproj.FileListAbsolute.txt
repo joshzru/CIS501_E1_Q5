@@ -1,0 +1,17 @@
+C:\Users\super\OneDrive\Desktop\CIS501\E1\Project Folder\CIS501_E1_Q5\CIS501_E1_Q5\bin\Debug\net6.0-windows\CIS501_E1_Q5.exe
+C:\Users\super\OneDrive\Desktop\CIS501\E1\Project Folder\CIS501_E1_Q5\CIS501_E1_Q5\bin\Debug\net6.0-windows\CIS501_E1_Q5.deps.json
+C:\Users\super\OneDrive\Desktop\CIS501\E1\Project Folder\CIS501_E1_Q5\CIS501_E1_Q5\bin\Debug\net6.0-windows\CIS501_E1_Q5.runtimeconfig.json
+C:\Users\super\OneDrive\Desktop\CIS501\E1\Project Folder\CIS501_E1_Q5\CIS501_E1_Q5\bin\Debug\net6.0-windows\CIS501_E1_Q5.dll
+C:\Users\super\OneDrive\Desktop\CIS501\E1\Project Folder\CIS501_E1_Q5\CIS501_E1_Q5\bin\Debug\net6.0-windows\CIS501_E1_Q5.pdb
+C:\Users\super\OneDrive\Desktop\CIS501\E1\Project Folder\CIS501_E1_Q5\CIS501_E1_Q5\obj\Debug\net6.0-windows\CIS501_E1_Q5.BookView.resources
+C:\Users\super\OneDrive\Desktop\CIS501\E1\Project Folder\CIS501_E1_Q5\CIS501_E1_Q5\obj\Debug\net6.0-windows\CIS501_E1_Q5.LibraryView.resources
+C:\Users\super\OneDrive\Desktop\CIS501\E1\Project Folder\CIS501_E1_Q5\CIS501_E1_Q5\obj\Debug\net6.0-windows\CIS501_E1_Q5.csproj.GenerateResource.cache
+C:\Users\super\OneDrive\Desktop\CIS501\E1\Project Folder\CIS501_E1_Q5\CIS501_E1_Q5\obj\Debug\net6.0-windows\CIS501_E1_Q5.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\super\OneDrive\Desktop\CIS501\E1\Project Folder\CIS501_E1_Q5\CIS501_E1_Q5\obj\Debug\net6.0-windows\CIS501_E1_Q5.AssemblyInfoInputs.cache
+C:\Users\super\OneDrive\Desktop\CIS501\E1\Project Folder\CIS501_E1_Q5\CIS501_E1_Q5\obj\Debug\net6.0-windows\CIS501_E1_Q5.AssemblyInfo.cs
+C:\Users\super\OneDrive\Desktop\CIS501\E1\Project Folder\CIS501_E1_Q5\CIS501_E1_Q5\obj\Debug\net6.0-windows\CIS501_E1_Q5.csproj.CoreCompileInputs.cache
+C:\Users\super\OneDrive\Desktop\CIS501\E1\Project Folder\CIS501_E1_Q5\CIS501_E1_Q5\obj\Debug\net6.0-windows\CIS501_E1_Q5.dll
+C:\Users\super\OneDrive\Desktop\CIS501\E1\Project Folder\CIS501_E1_Q5\CIS501_E1_Q5\obj\Debug\net6.0-windows\refint\CIS501_E1_Q5.dll
+C:\Users\super\OneDrive\Desktop\CIS501\E1\Project Folder\CIS501_E1_Q5\CIS501_E1_Q5\obj\Debug\net6.0-windows\CIS501_E1_Q5.pdb
+C:\Users\super\OneDrive\Desktop\CIS501\E1\Project Folder\CIS501_E1_Q5\CIS501_E1_Q5\obj\Debug\net6.0-windows\CIS501_E1_Q5.genruntimeconfig.cache
+C:\Users\super\OneDrive\Desktop\CIS501\E1\Project Folder\CIS501_E1_Q5\CIS501_E1_Q5\obj\Debug\net6.0-windows\ref\CIS501_E1_Q5.dll

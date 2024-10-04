@@ -21,6 +21,7 @@ namespace CIS501_E1_Q5
             _book = b;
             Text = _book.Title;
             BookPageLabel.Text = _book.GetCurrentPage();
+            uxGoToPageButton.Enabled = false;
             if (_book.CurrentPage == 0)
             {
                 uxPreviousPageButton.Enabled = false;
@@ -158,7 +159,14 @@ namespace CIS501_E1_Q5
 
         private void GoToPageTextBox_TextChanged(object sender, EventArgs e)
         {
-
+            if (Int32.TryParse(GoToPageTextBox.Text, out int result) && result >= 1 && result <= _book.Pages)
+            {
+                uxGoToPageButton.Enabled = true;
+            }
+            else
+            {
+                uxGoToPageButton.Enabled = false;
+            }
         }
     }
 }

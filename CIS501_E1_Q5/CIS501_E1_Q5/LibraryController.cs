@@ -18,7 +18,7 @@ namespace CIS501_E1_Q5
             string[] contents = new string[10];
             for (int i = 0; i < 10; i++)
             {
-                contents[i] = "The Quick Brown Fox Lept over the MOON: " + i.ToString();
+                contents[i] = "The Quick Brown Fox Lept over the MOON: " + (i + 1).ToString();
             }
             Book construct = new Book(10, contents, new List<int>(), "Alpha");
             AddBook(construct);
