@@ -110,6 +110,8 @@ namespace CIS501_E1_Q5
                     
                 }
             }
+
+            UpdateLibrary?.Invoke(_books.AsReadOnly());
         }
 
         public void SetBookView(Book book)

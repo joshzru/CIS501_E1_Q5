@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             splitContainer1 = new SplitContainer();
-            uxOpenBookButton = new Button();
             BookListBox = new ListBox();
+            uxOpenBookButton = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -56,17 +56,6 @@
             splitContainer1.SplitterDistance = 369;
             splitContainer1.TabIndex = 0;
             // 
-            // uxOpenBookButton
-            // 
-            uxOpenBookButton.Enabled = false;
-            uxOpenBookButton.Location = new Point(361, 42);
-            uxOpenBookButton.Name = "uxOpenBookButton";
-            uxOpenBookButton.Size = new Size(75, 23);
-            uxOpenBookButton.TabIndex = 0;
-            uxOpenBookButton.Text = "Open";
-            uxOpenBookButton.UseVisualStyleBackColor = true;
-            uxOpenBookButton.Click += uxOpenBookButton_Click;
-            // 
             // BookListBox
             // 
             BookListBox.Dock = DockStyle.Fill;
@@ -78,6 +67,17 @@
             BookListBox.TabIndex = 0;
             BookListBox.SelectedIndexChanged += BookListBox_SelectedIndexChanged;
             // 
+            // uxOpenBookButton
+            // 
+            uxOpenBookButton.Enabled = false;
+            uxOpenBookButton.Location = new Point(361, 42);
+            uxOpenBookButton.Name = "uxOpenBookButton";
+            uxOpenBookButton.Size = new Size(75, 23);
+            uxOpenBookButton.TabIndex = 0;
+            uxOpenBookButton.Text = "Open";
+            uxOpenBookButton.UseVisualStyleBackColor = true;
+            uxOpenBookButton.Click += uxOpenBookButton_Click;
+            // 
             // LibraryView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -86,7 +86,6 @@
             Controls.Add(splitContainer1);
             Name = "LibraryView";
             Text = "LibraryView";
-            FormClosing += LibraryView_FormClosing;
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();

@@ -22,17 +22,13 @@ namespace CIS501_E1_Q5
             SendBook = sendBook;
         }
 
-        public void UpdateLibrary(ReadOnlyCollection<Book> books)
+        public void UpdateBooks(ReadOnlyCollection<Book> books)
         {
             BookListBox.DataSource = books;
         }
         private void uxOpenBookButton_Click(object sender, EventArgs e)
         {
             SendBook((Book)BookListBox.SelectedItem);
-        }
-
-        private void LibraryView_FormClosing(object sender, FormClosingEventArgs e)
-        {
         }
 
         private void BookListBox_SelectedIndexChanged(object sender, EventArgs e)

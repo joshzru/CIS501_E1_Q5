@@ -18,7 +18,7 @@ namespace CIS501_E1_Q5
             LibraryView libraryView = new(controller.SetBookView);
             BookView bookView = new(controller.AddBookmark, controller.RemoveBookmark, controller.ChangePage, controller.ReturnPage);
 
-            controller.AttachLibraryDels(libraryView.UpdateLibrary);
+            controller.AttachLibraryDels(libraryView.UpdateBooks);
             controller.AttachBookDels(bookView.SetBook, bookView.SetButtonStates);
 
             Application.Run(libraryView);

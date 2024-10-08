@@ -43,19 +43,6 @@ namespace CIS501_E1_Q5
             return _content[CurrentPage];
         }
 
-        public void AddBookMark(int page)
-        {
-            if (!_bookmarks.Contains(page))
-            {
-                _bookmarks.Add(page);
-            }
-        }
-
-        public void RemoveBookmark(int page)
-        {
-            _bookmarks.Remove(page);
-        }
-
         public override string ToString()
         {
             return Title;

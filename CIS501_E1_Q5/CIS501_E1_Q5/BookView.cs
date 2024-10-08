@@ -17,13 +17,13 @@ namespace CIS501_E1_Q5
 
         private GetPageDel GetPage;
 
-        private AddBookmarkDel AddBookmark;
+        private HandleBookmarkDel AddBookmark;
 
-        private RemoveBookmarkDel RemoveBookmark;
+        private HandleBookmarkDel RemoveBookmark;
 
         private HandlePageChangeDel HandlePageChange;
 
-        public BookView(AddBookmarkDel addBookmark, RemoveBookmarkDel removeBookmark, HandlePageChangeDel handlePageChange, GetPageDel getPage)
+        public BookView(HandleBookmarkDel addBookmark, HandleBookmarkDel removeBookmark, HandlePageChangeDel handlePageChange, GetPageDel getPage)
         {
             InitializeComponent();
 

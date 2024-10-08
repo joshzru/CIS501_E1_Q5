@@ -11,9 +11,7 @@ namespace CIS501_E1_Q5
 
     public delegate void UpdateBookButtonsDel(bool nextPageButton, bool previousPageButton, bool addBookmarkButton, bool removeBookmarkButton);
 
-    public delegate void AddBookmarkDel(Book book, int pageNum);
-
-    public delegate void RemoveBookmarkDel(Book book, int pageNum);
+    public delegate void HandleBookmarkDel(Book book, int pageNum);
 
     public delegate bool HandlePageChangeDel(Book book, int pageNum);
 
