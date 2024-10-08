@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -12,55 +13,32 @@ namespace CIS501_E1_Q5
 {
     public partial class LibraryView : Form
     {
-        private List<Book> _books;
+        private SendBookDel SendBook;
 
-        private Book _selectedBook;
-
-        private BookModifiedDel BookModifiedDel;
-
-        public LibraryView(BookModifiedDel bookModified)
+        public LibraryView(SendBookDel sendBook)
         {
             InitializeComponent();
 
-            BookModifiedDel = bookModified;
-            _books = new List<Book>();
+            SendBook = sendBook;
         }
 
-        public void SyncData(List<Book> bookList)
+        public void UpdateLibrary(ReadOnlyCollection<Book> books)
         {
-            _books = bookList;
-            BookListBox.Items.Clear();
-            foreach (Book book in _books) 
-            { 
-                BookListBox.Items.Add(book.Title);
-            }
+            BookListBox.DataSource = books;
+        }
+        private void uxOpenBookButton_Click(object sender, EventArgs e)
+        {
+            SendBook((Book)BookListBox.SelectedItem);
         }
 
         private void LibraryView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // implement this
-        }
-
-        private void uxOpenBookButton_Click(object sender, EventArgs e)
-        {
-            BookView bookView = new BookView(_selectedBook);
-            bookView.ShowDialog();
-            Book modified = bookView._book;
-            bookView.Dispose();
-            BookModifiedDel(modified);
         }
 
         private void BookListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (BookListBox.SelectedItems.Count > 0)
-            {
-                uxOpenBookButton.Enabled = true;
-                _selectedBook = _books[BookListBox.SelectedIndex];
-            }
-            else
-            {
-                uxOpenBookButton.Enabled = false;
-            }
+            // True if the selected item is a book.
+            uxOpenBookButton.Enabled = BookListBox.SelectedItem is Book ? true : false;
         }
     }
 }

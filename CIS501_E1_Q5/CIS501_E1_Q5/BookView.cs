@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.DirectoryServices.ActiveDirectory;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,160 +13,121 @@ namespace CIS501_E1_Q5
 {
     public partial class BookView : Form
     {
-        public Book _book;
+        private Book? _book;
 
-        public BookView(Book b)
+        private GetPageDel GetPage;
+
+        private AddBookmarkDel AddBookmark;
+
+        private RemoveBookmarkDel RemoveBookmark;
+
+        private HandlePageChangeDel HandlePageChange;
+
+        public BookView(AddBookmarkDel addBookmark, RemoveBookmarkDel removeBookmark, HandlePageChangeDel handlePageChange, GetPageDel getPage)
         {
             InitializeComponent();
 
-            _book = b;
-            Text = _book.Title;
-            BookPageLabel.Text = _book.GetCurrentPage();
-            uxGoToPageButton.Enabled = false;
-            if (_book.CurrentPage == 0)
-            {
-                uxPreviousPageButton.Enabled = false;
-                uxNextPageButton.Enabled = true;
-            }
-            if (_book.CurrentPage == _book.Pages - 1)
-            {
-                uxPreviousPageButton.Enabled = true;
-                uxNextPageButton.Enabled = false;
-            }
-            if (_book.BookMarks.Contains(_book.CurrentPage))
-            {
-                uxAddBookMarkButton.Enabled = false;
-                uxRemoveBookmarkButton.Enabled = true;
-            }
-            else
-            {
-                uxAddBookMarkButton.Enabled = true;
-                uxRemoveBookmarkButton.Enabled = false;
-            }           
+            AddBookmark = addBookmark;
+            RemoveBookmark = removeBookmark;
+            HandlePageChange = handlePageChange;
+            GetPage = getPage;
+        }
+
+        public void SetBook(Book book)
+        {
+            _book = book;
+            Text = book.Title;
+
+            PageTextBox.Text = GetPage(book, book.CurrentPage);
+            Show();
         }
 
         private void BookView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Visible = false;
-            this.Enabled = false;
+            Hide();
             e.Cancel = true;
         }
 
         private void uxPreviousPageButton_Click(object sender, EventArgs e)
         {
-            _book.CurrentPage -= 1;
-            BookPageLabel.Text = _book.GetCurrentPage();
-            if (_book.CurrentPage == 0)
+            if (_book is Book book)
             {
-                uxPreviousPageButton.Enabled = false;
-                uxNextPageButton.Enabled = true;
-            }
-            else
-            {
-                uxPreviousPageButton.Enabled = true;
-                uxNextPageButton.Enabled = true;
-            }
-            if (_book.BookMarks.Contains(_book.CurrentPage))
-            {
-                uxAddBookMarkButton.Enabled = false;
-                uxRemoveBookmarkButton.Enabled = true;
-            }
-            else
-            {
-                uxAddBookMarkButton.Enabled = true;
-                uxRemoveBookmarkButton.Enabled = false;
+                if (!HandlePageChange(book, book.CurrentPage - 1))
+                {
+                    MessageBox.Show("Error in book: Page does not exist.");
+                }
             }
         }
 
         private void uxGoToPageButton_Click(object sender, EventArgs e)
         {
-            string text = GoToPageTextBox.Text;
-            int number = 0;
-            try
+            if (_book is Book book)
             {
-                number = Convert.ToInt32(text);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Invalid number or number exceeds the number of pages");
-                return;
-            }
-            
-            if (number < _book.Pages + 1 && number > 0)
-            {
-                _book.CurrentPage = number - 1;
-                BookPageLabel.Text = _book.GetCurrentPage();
-                if (_book.CurrentPage == 0)
+                if (!HandlePageChange(book, Int32.Parse(GoToPageTextBox.Text)))
                 {
-                    uxPreviousPageButton.Enabled = false;
-                    uxNextPageButton.Enabled = true;
-                }
-                if (_book.CurrentPage == _book.Pages - 1)
-                {
-                    uxPreviousPageButton.Enabled = true;
-                    uxNextPageButton.Enabled = false;
-                }
-                if (_book.BookMarks.Contains(_book.CurrentPage))
-                {
-                    uxAddBookMarkButton.Enabled = false;
-                    uxRemoveBookmarkButton.Enabled = true;
+                    MessageBox.Show("Error in book: Page does not exist.");
                 }
             }
-            else
-            {
-                MessageBox.Show("Invalid number or number exceeds the number of pages");
-            }
+        }
+
+        public void SetButtonStates(bool nextPageButton, bool previousPageButton, bool addBookmarkButton, bool removeBookmarkButton)
+        {
+            SetPageButtons(nextPageButton, previousPageButton);
+            SetBookmarkButtons(addBookmarkButton, removeBookmarkButton);
+        }
+
+        private void SetPageButtons(bool nextPageEnabled, bool previousPageEnabled)
+        {
+            uxNextPageButton.Enabled = nextPageEnabled;
+            uxPreviousPageButton.Enabled = previousPageEnabled;
         }
 
         private void uxRemoveBookmarkButton_Click(object sender, EventArgs e)
         {
-            _book.RemoveBookmark(_book.CurrentPage);
-            uxAddBookMarkButton.Enabled = true;
-            uxRemoveBookmarkButton.Enabled = false;
+            if (_book is Book book)
+            {
+                RemoveBookmark(book, book.CurrentPage);
+            }
         }
 
         private void uxAddBookMarkButton_Click(object sender, EventArgs e)
         {
-            _book.AddBookMark(_book.CurrentPage);
-            uxAddBookMarkButton.Enabled = false;
-            uxRemoveBookmarkButton.Enabled = true;
+            if (_book is Book book)
+            {
+                AddBookmark(book, book.CurrentPage);
+            }
+        }
+
+        private void SetBookmarkButtons(bool addBookmarkEnabled, bool removeBookmarkEnabled)
+        {
+            uxAddBookMarkButton.Enabled = addBookmarkEnabled;
+            uxRemoveBookmarkButton.Enabled = removeBookmarkEnabled;
         }
 
         private void uxNextPageButton_Click(object sender, EventArgs e)
         {
-            _book.CurrentPage += 1;
-            BookPageLabel.Text = _book.GetCurrentPage();
-            if (_book.CurrentPage == _book.Pages - 1)
+            if (_book is Book book)
             {
-                uxPreviousPageButton.Enabled = true;
-                uxNextPageButton.Enabled = false;
-            }
-            else
-            {
-                uxPreviousPageButton.Enabled = true;
-                uxNextPageButton.Enabled = true;
-            }
-            if (_book.BookMarks.Contains(_book.CurrentPage))
-            {
-                uxAddBookMarkButton.Enabled = false;
-                uxRemoveBookmarkButton.Enabled = true;
-            }
-            else
-            {
-                uxAddBookMarkButton.Enabled = true;
-                uxRemoveBookmarkButton.Enabled = false;
+                if (!HandlePageChange(book, book.CurrentPage + 1))
+                {
+                    MessageBox.Show("Error in book: Page does not exist.");
+                }
             }
         }
 
         private void GoToPageTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (Int32.TryParse(GoToPageTextBox.Text, out int result) && result >= 1 && result <= _book.Pages)
+            // Ask if this validation should be done in the controller, or if its fine to be done inside the view.
+            if (_book is Book book)
             {
-                uxGoToPageButton.Enabled = true;
-            }
-            else
-            {
-                uxGoToPageButton.Enabled = false;
+                if (Int32.TryParse(GoToPageTextBox.Text, out int result))
+                {
+                    uxGoToPageButton.Enabled = true;
+                }
+                else
+                {
+                    uxGoToPageButton.Enabled = false;
+                }
             }
         }
     }

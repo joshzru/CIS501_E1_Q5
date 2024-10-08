@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,21 +11,24 @@ namespace CIS501_E1_Q5
     {
         private string[] _content;
 
+        public ReadOnlyCollection<string> Content => Array.AsReadOnly<string>(_content);
+
         private List<int> _bookmarks;
-        
-        public int CurrentPage;
+        public ReadOnlyCollection<int> Bookmarks => _bookmarks.AsReadOnly();
+
+        private int _currentPage;
+
+        public int CurrentPage => _currentPage;
         
         public int Pages;
 
         public string Title;
 
-        public List<int> BookMarks => _bookmarks;
-
-        public Book(int pages, string[] content, List<int> bookmarks, string title)
+        public Book(int pages, string[] content, List<int> bookmarks, string title, int currentPage = 0)
         {
             Pages = pages;
             _content = content;
-            CurrentPage = 0;
+            _currentPage = currentPage;
             _bookmarks = bookmarks;
             Title = title;
         }
@@ -50,6 +54,11 @@ namespace CIS501_E1_Q5
         public void RemoveBookmark(int page)
         {
             _bookmarks.Remove(page);
+        }
+
+        public override string ToString()
+        {
+            return Title;
         }
     }
 }

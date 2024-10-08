@@ -33,10 +33,10 @@
             GoToPageTextBox = new TextBox();
             uxPreviousPageButton = new Button();
             splitContainer2 = new SplitContainer();
-            BookPageLabel = new Label();
             uxRemoveBookmarkButton = new Button();
             uxAddBookMarkButton = new Button();
             uxNextPageButton = new Button();
+            PageTextBox = new TextBox();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -63,7 +63,7 @@
             // 
             splitContainer1.Panel2.Controls.Add(splitContainer2);
             splitContainer1.Size = new Size(800, 450);
-            splitContainer1.SplitterDistance = 150;
+            splitContainer1.SplitterDistance = 134;
             splitContainer1.TabIndex = 0;
             // 
             // uxGoToPageButton
@@ -87,7 +87,7 @@
             // uxPreviousPageButton
             // 
             uxPreviousPageButton.Anchor = AnchorStyles.Left;
-            uxPreviousPageButton.Location = new Point(12, 207);
+            uxPreviousPageButton.Location = new Point(12, 236);
             uxPreviousPageButton.Name = "uxPreviousPageButton";
             uxPreviousPageButton.Size = new Size(75, 23);
             uxPreviousPageButton.TabIndex = 0;
@@ -103,30 +103,21 @@
             // 
             // splitContainer2.Panel1
             // 
-            splitContainer2.Panel1.Controls.Add(BookPageLabel);
+            splitContainer2.Panel1.Controls.Add(PageTextBox);
             // 
             // splitContainer2.Panel2
             // 
             splitContainer2.Panel2.Controls.Add(uxRemoveBookmarkButton);
             splitContainer2.Panel2.Controls.Add(uxAddBookMarkButton);
             splitContainer2.Panel2.Controls.Add(uxNextPageButton);
-            splitContainer2.Size = new Size(646, 450);
-            splitContainer2.SplitterDistance = 487;
+            splitContainer2.Size = new Size(662, 450);
+            splitContainer2.SplitterDistance = 423;
             splitContainer2.TabIndex = 0;
-            // 
-            // BookPageLabel
-            // 
-            BookPageLabel.Dock = DockStyle.Fill;
-            BookPageLabel.Location = new Point(0, 0);
-            BookPageLabel.Name = "BookPageLabel";
-            BookPageLabel.Size = new Size(487, 450);
-            BookPageLabel.TabIndex = 0;
-            BookPageLabel.Text = "BookContent";
             // 
             // uxRemoveBookmarkButton
             // 
             uxRemoveBookmarkButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            uxRemoveBookmarkButton.Location = new Point(39, 41);
+            uxRemoveBookmarkButton.Location = new Point(90, 41);
             uxRemoveBookmarkButton.Name = "uxRemoveBookmarkButton";
             uxRemoveBookmarkButton.Size = new Size(75, 23);
             uxRemoveBookmarkButton.TabIndex = 2;
@@ -137,7 +128,7 @@
             // uxAddBookMarkButton
             // 
             uxAddBookMarkButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            uxAddBookMarkButton.Location = new Point(39, 12);
+            uxAddBookMarkButton.Location = new Point(90, 12);
             uxAddBookMarkButton.Name = "uxAddBookMarkButton";
             uxAddBookMarkButton.Size = new Size(75, 23);
             uxAddBookMarkButton.TabIndex = 1;
@@ -148,13 +139,23 @@
             // uxNextPageButton
             // 
             uxNextPageButton.Anchor = AnchorStyles.Right;
-            uxNextPageButton.Location = new Point(68, 207);
+            uxNextPageButton.Location = new Point(119, 236);
             uxNextPageButton.Name = "uxNextPageButton";
             uxNextPageButton.Size = new Size(75, 23);
             uxNextPageButton.TabIndex = 0;
             uxNextPageButton.Text = "-->";
             uxNextPageButton.UseVisualStyleBackColor = true;
             uxNextPageButton.Click += uxNextPageButton_Click;
+            // 
+            // PageTextBox
+            // 
+            PageTextBox.Dock = DockStyle.Fill;
+            PageTextBox.Location = new Point(0, 0);
+            PageTextBox.Multiline = true;
+            PageTextBox.Name = "PageTextBox";
+            PageTextBox.ReadOnly = true;
+            PageTextBox.Size = new Size(423, 450);
+            PageTextBox.TabIndex = 0;
             // 
             // BookView
             // 
@@ -171,6 +172,7 @@
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
             splitContainer2.Panel1.ResumeLayout(false);
+            splitContainer2.Panel1.PerformLayout();
             splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
             splitContainer2.ResumeLayout(false);
@@ -185,8 +187,8 @@
         private Button uxGoToPageButton;
         private TextBox GoToPageTextBox;
         private Button uxPreviousPageButton;
-        private Label BookPageLabel;
         private Button uxRemoveBookmarkButton;
         private Button uxAddBookMarkButton;
+        private TextBox PageTextBox;
     }
 }
